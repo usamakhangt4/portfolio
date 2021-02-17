@@ -1,4 +1,4 @@
-import { Navbar } from "../components";
+import { Navbar } from "components";
 
 export default function Home() {
   return (
@@ -6,11 +6,11 @@ export default function Home() {
       <header>
         <Navbar />
       </header>
-      <main className="flex items-center justify-center w-full h-screen bg-purple-600">
+      {/* <main className="flex items-center justify-center w-full h-screen bg-purple-600">
         <h1 className=" mx-1 text-6xl text-white">
           React App boilerplate with typescript and tailwind
         </h1>
-      </main>
+      </main> */}
     </>
   );
 }
