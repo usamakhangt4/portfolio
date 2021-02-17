@@ -7,13 +7,14 @@ export default function Navbar() {
   const [navOpen, setNavOpen] = useState(true);
 
   const mobilenavClasses = classNames({
-    "flex flex-col items-center justify-center gap-2 pb-5 md:pr-3 bg-white md:shadow-none shadow-md md:flex-row": true,
+    "md:flex flex-col items-center justify-center gap-2 md:gap-5 pb-5 md:pr-3 bg-white md:shadow-none shadow-md md:flex-row": true,
     hidden: !navOpen,
+    flex: navOpen,
   });
   return (
     <header className="font-nunito py-5">
       <nav className="max-w-7xl md:flex-row md:items-center md:justify-between flex flex-col mx-auto">
-        <section className="flex items-center justify-between px-3">
+        <section className="flex items-center justify-between px-3 pb-5">
           <img src="/images/mf-logo.svg" alt="logo" className="h-14" />
           <button
             onClick={() => setNavOpen(!navOpen)}
