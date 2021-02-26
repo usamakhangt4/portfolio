@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
-import { CloseIcon, MenuIcon } from "svgs";
+import { CloseIcon, LogoIcon, MenuIcon } from "svgs";
 import { classNames } from "utils/helper";
 
 export default function Navbar() {
@@ -15,12 +16,14 @@ export default function Navbar() {
     <header className="font-nunito py-5">
       <nav className="max-w-7xl md:flex-row md:items-center md:justify-between flex flex-col mx-auto">
         <section className=" flex items-center justify-between px-3">
-          <img src="/images/mf-logo.svg" alt="logo" className="h-14" />
-          <button
-            onClick={() => setNavOpen(!navOpen)}
-            className="sm:block md:hidden text-purple-800">
-            {!navOpen ? MenuIcon : CloseIcon}
-          </button>
+          <Router>
+            <Link to={"#"}>{LogoIcon}</Link>
+            <button
+              onClick={() => setNavOpen(!navOpen)}
+              className="sm:block md:hidden text-purple-800">
+              {!navOpen ? MenuIcon : CloseIcon}
+            </button>
+          </Router>
         </section>
         <section className={mobilenavClasses}>
           <a
