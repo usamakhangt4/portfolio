@@ -1,9 +1,9 @@
-import { Hero } from "components";
+import { Intro } from "components";
 
 export default function App() {
   return (
     <>
-      <Hero />
+      <Intro />
     </>
   );
 }
