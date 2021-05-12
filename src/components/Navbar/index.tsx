@@ -30,7 +30,7 @@ export default function Navbar() {
           {navItems.map((item) => (
             <a
               href={item.link}
-              className="hover:text-purple-600 text-lg font-light text-black cursor-pointer">
+              className="hover:text-purple-600 text-lg font-light text-black capitalize cursor-pointer">
               {item.title}
             </a>
           ))}
