@@ -9,7 +9,8 @@ export default function Navbar() {
   const [navOpen, setNavOpen] = useState(true);
 
   const mobilenavClasses = classNames({
-    "md:flex flex-col items-center justify-center gap-2 md:gap-5  md:pr-3 bg-white md:shadow-none shadow-md md:flex-row": true,
+    "md:flex flex-col items-center justify-center gap-2 md:gap-5  md:pr-3 bg-white md:shadow-none shadow-md md:flex-row":
+      true,
     hidden: !navOpen,
     flex: navOpen,
   });
@@ -35,7 +36,7 @@ export default function Navbar() {
             </a>
           ))}
 
-          <button className="rounded-3xl hover:bg-purple-600 hover:text-white px-3 py-2 text-lg text-purple-600 transition-all duration-300 ease-in-out border-2 border-purple-600">
+          <button className="rounded-3xl hover:bg-purple-600 hover:text-white px-5 py-2 text-lg text-purple-600 transition-all duration-300 ease-in-out border-2 border-purple-600">
             Say Hello
           </button>
         </section>
