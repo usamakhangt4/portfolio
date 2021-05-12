@@ -17,13 +17,13 @@ export default function index() {
       <section className="grid grid-cols-3 gap-6 py-16">
         {list.map((work) => (
           <section className="group w-96 h-72 rounded-xl relative border">
-            <article className="group-hover:bg-indigo-900 gap-7 rounded-xl group-hover:opacity-100 absolute inset-0 grid items-center content-center transition-all duration-300 ease-in-out opacity-0">
+            <article className="group-hover:bg-indigo-900 gap-7 rounded-xl group-hover:opacity-100 absolute inset-0 grid items-center content-center transition-all duration-500 ease-in-out opacity-0">
               <p className="font-Exo_2 max-w-xs m-auto text-2xl text-white">
                 {work.title}
               </p>
               <a
                 href={work.link}
-                className="hover:bg-purple-600 hover:text-white h-11 w-max flex items-center justify-center gap-2 px-4 py-2 mx-auto text-lg text-purple-600 transition-all duration-300 ease-in-out border-2 border-purple-600 rounded-full">
+                className="hover:bg-purple-600 h-11 w-max flex items-center justify-center gap-2 px-4 py-2 mx-auto text-lg text-white transition-all duration-300 ease-in-out border-2 border-purple-600 rounded-full">
                 <span>Visit Website</span>
                 <figure className="w-3">{iconWithLink}</figure>
               </a>
