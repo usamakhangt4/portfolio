@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     fontFamily: {
       nunito: ["Nunito", "sans-serif"],
+      Exo_2: ["Exo 2", "sans-serif"],
     },
 
     extend: {},
