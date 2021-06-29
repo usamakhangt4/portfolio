@@ -6,7 +6,7 @@ export default function index() {
 
   return (
     <main className="py-36 font-nunito grid items-center justify-center px-6 text-center">
-      <h1 className="mb-6 text-3xl font-bold">{title}</h1>
+      <h1 className="text-blue-dark mb-6 text-3xl font-bold">{title}</h1>
       <p className="mb-5 text-xl font-light leading-normal">
         {description}
         <a href={mail} className="ml-1 font-bold text-purple-800">
@@ -15,8 +15,10 @@ export default function index() {
       </p>
 
       <section className="grid grid-cols-3 gap-6 py-16">
-        {list.map((work) => (
-          <section className="group w-96 h-72 rounded-xl relative border">
+        {list.map((work, index) => (
+          <section
+            className="group w-96 h-72 rounded-xl relative border"
+            key={work.img + index}>
             <article className="group-hover:bg-indigo-900 gap-7 rounded-xl group-hover:opacity-100 absolute inset-0 grid items-center content-center transition-all duration-500 ease-in-out opacity-0">
               <p className="font-Exo_2 max-w-xs m-auto text-2xl text-white">
                 {work.title}
