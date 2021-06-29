@@ -1,4 +1,4 @@
-import { Intro, Navbar, AboutMe, Hero, RecentWork } from "components";
+import { Intro, Navbar, Hero, RecentWork, Collaboration } from "components";
 
 export default function App() {
   return (
@@ -7,6 +7,8 @@ export default function App() {
       <Hero />
       <Intro />
       <RecentWork />
+      <hr />
+      <Collaboration />
     </>
   );
 }

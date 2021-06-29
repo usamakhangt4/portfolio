@@ -7,7 +7,11 @@ module.exports = {
       Exo_2: ["Exo 2", "sans-serif"],
     },
 
-    extend: {},
+    extend: {
+      colors: {
+        blue: { dark: "rgb(20 25 58)" },
+      },
+    },
   },
   variants: {
     extend: {},

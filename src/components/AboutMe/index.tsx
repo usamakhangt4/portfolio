@@ -9,7 +9,9 @@ export default function AboutMe() {
             index === 1 && "border"
           }`}>
           <figure className="mb-8">{card.logo}</figure>
-          <h2 className="my-6 text-2xl font-bold">{card.title}</h2>
+          <h2 className="text-blue-dark my-6 text-2xl font-bold">
+            {card.title}
+          </h2>
           <p className="h-20 text-lg font-light">{card.description}</p>
           {card.subIntros.map((subIntro) => (
             <article className=" mt-12">

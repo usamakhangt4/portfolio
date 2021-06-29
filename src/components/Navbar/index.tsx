@@ -28,9 +28,10 @@ export default function Navbar() {
           </Router>
         </section>
         <section className={mobilenavClasses}>
-          {navItems.map((item) => (
+          {navItems.map((item, index) => (
             <a
               href={item.link}
+              key={item.link + index}
               className="hover:text-purple-600 text-lg font-light text-black capitalize cursor-pointer">
               {item.title}
             </a>
