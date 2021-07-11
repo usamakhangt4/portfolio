@@ -29,7 +29,7 @@ export default function index() {
           <section className="">
             <img
               src={testimonial.client_img}
-              alt=""
+              alt="client pic"
               className="w-24 h-24 m-auto rounded-full"
             />
             <p className=" max-w-2xl m-auto mt-8 mb-6 text-2xl font-light text-black">
