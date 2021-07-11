@@ -18,7 +18,7 @@ export default function index() {
               <figure className="text-center">
                 <img src={project.logo} alt="" className="mx-auto mb-8" />
                 <figcaption>
-                  <p className=" mb-8 text-lg font-light">
+                  <p className=" mb-8 text-lg font-light text-gray-600">
                     {project.description}
                   </p>
                 </figcaption>

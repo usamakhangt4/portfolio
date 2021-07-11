@@ -5,6 +5,8 @@ import AboutMe from "./AboutMe";
 import RecentWork from "./RecentWork";
 import Collaboration from "./Collaboration";
 import StartupProjects from "./StartupProjects";
+import CallOut from "./CallOut";
+import Testimonials from "./Testimonials";
 
 export {
   Navbar,
@@ -14,4 +16,6 @@ export {
   RecentWork,
   Collaboration,
   StartupProjects,
+  CallOut,
+  Testimonials,
 };

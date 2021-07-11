@@ -12,18 +12,22 @@ export default function AboutMe() {
           <h2 className="text-blue-dark my-6 text-2xl font-bold">
             {card.title}
           </h2>
-          <p className="h-20 text-lg font-light">{card.description}</p>
+          <p className="h-20 text-lg font-light text-gray-600">
+            {card.description}
+          </p>
           {card.subIntros.map((subIntro) => (
             <article className=" mt-12">
               <h6 className="mb-2 text-lg font-normal text-purple-800">
                 {subIntro.title}
               </h6>
               {subIntro.description ? (
-                <p className="text-lg font-light">{subIntro.description}</p>
+                <p className="text-lg font-light text-gray-600">
+                  {subIntro.description}
+                </p>
               ) : (
                 <ul className="text-lg font-light">
                   {subIntro.list?.map((item) => (
-                    <li className="leading-8">{item}</li>
+                    <li className="leading-8 text-gray-600">{item}</li>
                   ))}
                 </ul>
               )}
