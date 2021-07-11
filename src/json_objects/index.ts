@@ -5,3 +5,5 @@ export * from "./intro";
 export * from "./recent-work";
 export * from "./collaboration";
 export * from "./startup";
+export * from "./call-out";
+export * from "./testimonials";

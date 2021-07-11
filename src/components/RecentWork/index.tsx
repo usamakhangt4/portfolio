@@ -7,7 +7,7 @@ export default function index() {
   return (
     <main className="py-36 font-nunito grid items-center justify-center px-6 text-center">
       <h1 className="text-blue-dark mb-6 text-3xl font-bold">{title}</h1>
-      <p className="mb-5 text-xl font-light leading-normal">
+      <p className="mb-5 text-xl font-light leading-normal text-gray-600">
         {description}
         <a href={mail} className="ml-1 font-bold text-purple-800">
           Email me
