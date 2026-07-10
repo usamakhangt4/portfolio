@@ -1,0 +1,63 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
+import SiteFooter from "@/components/SiteFooter.astro";
+import SiteHeader from "@/components/SiteHeader.astro";
+
+const projects = (await getCollection("work"))
+  .filter((project) => project.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
+
+const flagshipWork = projects.filter(
+  (project) => (project.data.tier ?? "flagship") === "flagship",
+);
+const supportingWork = projects.filter(
+  (project) => project.data.tier === "supporting",
+);
+---
+
+<BaseLayout
+  title="Work"
+  description="Selected case studies from Muhammad Usama Khan — React libraries, Web Components, Next.js apps, and developer tools."
+  canonicalPath="/work"
+>
+  <SiteHeader />
+
+  <main>
+    <section class="section-shell work-page-intro">
+      <h1>Work</h1>
+      <p>
+        Case studies with public source, demos, or live apps. Flagship first,
+        then supporting projects.
+      </p>
+    </section>
+
+    <section class="section-shell section-block">
+      <div class="project-list">
+        {flagshipWork.map((project, index) => (
+          <ProjectCard project={project} index={index} />
+        ))}
+      </div>
+    </section>
+
+    {
+      supportingWork.length > 0 && (
+        <section class="section-shell section-block">
+          <div class="section-heading">
+            <h2>Also</h2>
+            <p>Supporting apps and experiments.</p>
+          </div>
+
+          <div class="project-list project-list-compact">
+            {supportingWork.map((project, index) => (
+              <ProjectCard project={project} index={index} />
+            ))}
+          </div>
+        </section>
+      )
+    }
+  </main>
+
+  <SiteFooter />
+</BaseLayout>
