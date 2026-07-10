@@ -10,8 +10,6 @@
 
 # production
 /build
-/dist
-/.astro
 
 # misc
 .DS_Store
