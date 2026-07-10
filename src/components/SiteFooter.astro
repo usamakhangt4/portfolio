@@ -1,0 +1,19 @@
+---
+import { siteConfig } from "@/data/site";
+---
+
+<footer id="contact" class="site-footer">
+  <div class="footer-copy">
+    <h2>Contact</h2>
+    <p>
+      Open to frontend roles and contract work around React libraries,
+      component systems, and product UI.
+    </p>
+  </div>
+
+  <div class="footer-actions" aria-label="Contact links">
+    <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+    <a href={siteConfig.social.github} rel="noopener noreferrer">GitHub</a>
+    <a href={siteConfig.social.npm} rel="noopener noreferrer">npm</a>
+  </div>
+</footer>
