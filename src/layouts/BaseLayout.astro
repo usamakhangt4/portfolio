@@ -63,6 +63,24 @@ const graph = [personJsonLd(), websiteJsonLd(), ...jsonLdItems].filter(Boolean);
       type="application/ld+json"
       set:html={JSON.stringify({ "@context": "https://schema.org", "@graph": graph })}
     />
+
+    <script is:inline>
+      // Set the theme before first paint to avoid a flash of the wrong theme.
+      (() => {
+        try {
+          const stored = localStorage.getItem("theme");
+          const theme =
+            stored === "light" || stored === "dark"
+              ? stored
+              : window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light";
+          document.documentElement.dataset.theme = theme;
+        } catch {
+          /* ignore: falls back to CSS prefers-color-scheme */
+        }
+      })();
+    </script>
   </head>
   <body>
     <slot />

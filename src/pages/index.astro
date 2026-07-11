@@ -19,6 +19,9 @@ const supportingWork = work.filter(
 );
 
 const featured = flagshipWork[0];
+// The featured project is highlighted in the hero, so exclude it from the
+// "Selected work" list below to avoid showing the same project twice.
+const restOfFlagship = flagshipWork.slice(1);
 ---
 
 <BaseLayout canonicalPath="/" jsonLd={profilePageJsonLd()}>
@@ -26,37 +29,39 @@ const featured = flagshipWork[0];
 
   <main>
     <section class="hero">
-      <div class="hero-inner section-shell">
-        <p class="hero-role mono">Frontend Engineer</p>
-        <h1>{siteConfig.name}</h1>
-        <p class="hero-lede">
-          I publish typed React libraries and ship Next.js product UIs —
-          virtualized trees, Web Components, and tools people can install.
-        </p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="#work">Selected work</a>
-          <a class="button" href={`mailto:${siteConfig.email}`}>Email</a>
+      <div class="section-shell">
+        <div class="hero-inner">
+          <p class="hero-role mono">Frontend Engineer</p>
+          <h1>{siteConfig.name}</h1>
+          <p class="hero-lede">
+            I publish typed React libraries and ship Next.js product UIs —
+            virtualized trees, Web Components, and tools people can install.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#work">Selected work</a>
+            <a class="button" href={`mailto:${siteConfig.email}`}>Email</a>
+          </div>
         </div>
-      </div>
 
-      {
-        featured && (
-          <a class="hero-feature section-shell" href={`/work/${featured.id}`}>
-            <div class="hero-feature-label mono">Featured</div>
-            <div class="hero-feature-frame">
-              <div class="preview-chrome" aria-hidden="true">
-                <span></span><span></span><span></span>
-                <code class="mono">{featured.id}</code>
+        {
+          featured && (
+            <a class="hero-feature" href={`/work/${featured.id}`}>
+              <div class="hero-feature-label mono">Featured</div>
+              <div class="hero-feature-frame">
+                <div class="preview-chrome" aria-hidden="true">
+                  <span></span><span></span><span></span>
+                  <code class="mono">{featured.id}</code>
+                </div>
+                <div class="hero-feature-body">
+                  <p class="mono">{featured.data.type}</p>
+                  <strong>{featured.data.title}</strong>
+                  <p>{featured.data.summary}</p>
+                </div>
               </div>
-              <div class="hero-feature-body">
-                <p class="mono">{featured.data.type}</p>
-                <strong>{featured.data.title}</strong>
-                <p>{featured.data.summary}</p>
-              </div>
-            </div>
-          </a>
-        )
-      }
+            </a>
+          )
+        }
+      </div>
     </section>
 
     <section id="work" class="section-shell section-block">
@@ -66,7 +71,7 @@ const featured = flagshipWork[0];
       </div>
 
       <div class="project-list">
-        {flagshipWork.map((project, index) => (
+        {restOfFlagship.map((project, index) => (
           <ProjectCard project={project} index={index} />
         ))}
       </div>

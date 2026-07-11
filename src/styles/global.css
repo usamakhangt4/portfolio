@@ -15,13 +15,18 @@
   color-scheme: light;
   --ink: #0b0d10;
   --ink-soft: #1c2128;
-  --muted: #5c6570;
+  --muted: #545e69;
   --paper: #f3f1ec;
   --paper-deep: #e8e4db;
   --panel: #faf9f6;
   --line: #d5d0c6;
   --accent: #0f6e6a;
   --accent-ink: #0a4f4c;
+  --body-bg:
+    radial-gradient(ellipse 80% 50% at 100% -10%, rgba(15, 110, 106, 0.08), transparent 55%),
+    linear-gradient(180deg, var(--paper) 0%, #efece5 100%);
+  --frame-shadow: 0 24px 60px rgba(11, 13, 16, 0.08);
+  --chrome-dot: #c4bdb0;
 }
 
 * {
@@ -49,9 +54,7 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background:
-    radial-gradient(ellipse 80% 50% at 100% -10%, rgba(15, 110, 106, 0.08), transparent 55%),
-    linear-gradient(180deg, var(--paper) 0%, #efece5 100%);
+  background: var(--body-bg);
   color: var(--ink);
   font-family: var(--font-sans);
   font-size: 1.05rem;
@@ -114,10 +117,53 @@ ul {
   letter-spacing: -0.02em;
 }
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
 .nav-links {
   display: flex;
   flex-wrap: wrap;
   gap: 4px 18px;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+
+.theme-toggle:hover {
+  color: var(--ink);
+  border-color: var(--ink-soft);
+}
+
+.theme-toggle svg {
+  width: 16px;
+  height: 16px;
+}
+
+.theme-toggle .icon-sun {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-toggle .icon-sun {
+  display: block;
+}
+
+:root[data-theme="dark"] .theme-toggle .icon-moon {
+  display: none;
 }
 
 .nav-links a {
@@ -129,6 +175,11 @@ ul {
 
 .nav-links a:hover {
   color: var(--ink);
+}
+
+.nav-links a[aria-current="page"] {
+  color: var(--ink);
+  font-weight: 600;
 }
 
 /* ——— Hero ——— */
@@ -218,7 +269,7 @@ ul {
   border: 1px solid var(--line);
   border-radius: 4px;
   background: var(--panel);
-  box-shadow: 0 24px 60px rgba(11, 13, 16, 0.08);
+  box-shadow: var(--frame-shadow);
   transition: border-color 180ms ease, transform 180ms ease;
 }
 
@@ -240,7 +291,7 @@ ul {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #c4bdb0;
+  background: var(--chrome-dot);
 }
 
 .preview-chrome code {
@@ -439,6 +490,26 @@ ul {
 .stack-section {
   border-block: 1px solid var(--line);
   background: color-mix(in srgb, var(--panel) 55%, transparent);
+  padding-block: 40px;
+}
+
+.stack-section .section-heading {
+  margin-bottom: 20px;
+}
+
+/* On wider screens, lay the heading and chips side by side so the tinted
+   band fills its width and hugs its content instead of leaving dead space. */
+@media (min-width: 721px) {
+  .stack-section {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: 48px;
+    align-items: center;
+  }
+
+  .stack-section .section-heading {
+    margin-bottom: 0;
+  }
 }
 
 .stack-line {
@@ -716,5 +787,53 @@ ul {
 
   .brand {
     font-size: 0.88rem;
+  }
+}
+
+/* ——— Dark theme ——— */
+
+/*
+ * Dark tokens apply when the visitor explicitly picks dark
+ * (:root[data-theme="dark"], set by the theme toggle), or — for visitors
+ * without JS — when the OS prefers dark and no explicit choice was made.
+ * An explicit [data-theme] always wins over the OS preference.
+ * All element styling reads the --* tokens, so only the tokens change here.
+ */
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #e9e6df;
+  --ink-soft: #c9ced5;
+  --muted: #99a2ac;
+  --paper: #0d0f12;
+  --paper-deep: #16191e;
+  --panel: #14171c;
+  --line: #2a2f38;
+  --accent: #4fd1c5;
+  --accent-ink: #8fe3d9;
+  --body-bg:
+    radial-gradient(ellipse 80% 50% at 100% -10%, rgba(79, 209, 197, 0.08), transparent 55%),
+    linear-gradient(180deg, var(--paper) 0%, #090b0e 100%);
+  --frame-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  --chrome-dot: #3a414b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --ink: #e9e6df;
+    --ink-soft: #c9ced5;
+    --muted: #99a2ac;
+    --paper: #0d0f12;
+    --paper-deep: #16191e;
+    --panel: #14171c;
+    --line: #2a2f38;
+    --accent: #4fd1c5;
+    --accent-ink: #8fe3d9;
+    --body-bg:
+      radial-gradient(ellipse 80% 50% at 100% -10%, rgba(79, 209, 197, 0.08), transparent 55%),
+      linear-gradient(180deg, var(--paper) 0%, #090b0e 100%);
+    --frame-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+    --chrome-dot: #3a414b;
   }
 }

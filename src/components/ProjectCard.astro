@@ -30,10 +30,9 @@ const number = String(index + 1).padStart(2, "0");
       <div class="project-preview" aria-hidden="true" data-accent={index % 3}>
         <div class="preview-chrome">
           <span></span><span></span><span></span>
-          <code class="mono">{project.id}</code>
         </div>
         <div class="preview-body">
-          <strong>{data.title}</strong>
+          <strong class="mono">{project.id}</strong>
           <span class="mono">{data.year} · {data.role}</span>
         </div>
       </div>
