@@ -44,4 +44,4 @@ The core is a Web Component, giving the package a stable browser-native boundary
 
 ## Outcome
 
-The project demonstrates library packaging beyond React alone: custom elements, Shadow DOM, canvas rendering, preload strategy, and wrapper ergonomics. It is especially useful as proof of component engineering that can cross app boundaries.
+The viewer ships as a framework-agnostic custom element with React, Vue, and Angular wrappers. Canvas rendering, image preloading, zoom, and high-resolution swaps provide one implementation that can be reused across different application stacks.

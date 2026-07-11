@@ -12,6 +12,7 @@
 /build
 /dist
 /.astro
+/.vercel
 
 # misc
 .DS_Store

@@ -6,7 +6,7 @@ import SiteFooter from "@/components/SiteFooter.astro";
 import SiteHeader from "@/components/SiteHeader.astro";
 
 const projects = (await getCollection("work"))
-  .filter((project) => project.data.featured)
+  .filter((project) => !project.data.draft)
   .sort((a, b) => a.data.order - b.data.order);
 
 const flagshipWork = projects.filter(
@@ -24,7 +24,7 @@ const supportingWork = projects.filter(
 >
   <SiteHeader />
 
-  <main>
+  <main id="main-content" tabindex="-1">
     <section class="section-shell work-page-intro">
       <h1>Work</h1>
       <p>
@@ -34,6 +34,10 @@ const supportingWork = projects.filter(
     </section>
 
     <section class="section-shell section-block">
+      <div class="section-heading">
+        <h2>Flagship work</h2>
+        <p>Primary libraries, tools, and product case studies.</p>
+      </div>
       <div class="project-list">
         {flagshipWork.map((project, index) => (
           <ProjectCard project={project} index={index} />

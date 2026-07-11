@@ -2,18 +2,21 @@ import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import vercel from "@astrojs/vercel";
+import { loadEnv } from "vite";
 
-function resolveSite() {
-  const explicit = process.env.PUBLIC_SITE_URL ?? process.env.SITE_URL;
+function resolveSite(env) {
+  const explicit = env.PUBLIC_SITE_URL ?? env.SITE_URL;
   if (explicit) return explicit.replace(/\/$/, "");
-  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
-    return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL.replace(/\/$/, "")}`;
+  if (env.VERCEL_PROJECT_PRODUCTION_URL) {
+    return `https://${env.VERCEL_PROJECT_PRODUCTION_URL.replace(/\/$/, "")}`;
   }
-  return "https://usamakhangt4.github.io";
+  return "https://usamakhan.vercel.app";
 }
 
+const env = loadEnv(process.env.NODE_ENV ?? "development", process.cwd(), "");
+
 export default defineConfig({
-  site: resolveSite(),
+  site: resolveSite(env),
   trailingSlash: "never",
   integrations: [sitemap()],
   adapter: vercel({

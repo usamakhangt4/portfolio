@@ -5,10 +5,10 @@ import ProjectCard from "@/components/ProjectCard.astro";
 import SiteFooter from "@/components/SiteFooter.astro";
 import SiteHeader from "@/components/SiteHeader.astro";
 import { profilePageJsonLd } from "@/lib/seo";
-import { siteConfig, stackLine } from "@/data/site";
+import { siteConfig, stackGroups } from "@/data/site";
 
 const work = (await getCollection("work"))
-  .filter((project) => project.data.featured)
+  .filter((project) => !project.data.draft && project.data.featured)
   .sort((a, b) => a.data.order - b.data.order);
 
 const flagshipWork = work.filter(
@@ -39,7 +39,7 @@ const featuredCommand = featuredNpm
 <BaseLayout canonicalPath="/" jsonLd={profilePageJsonLd()}>
   <SiteHeader />
 
-  <main>
+  <main id="main-content" tabindex="-1">
     <section class="hero">
       <div class="section-shell">
         <div class="hero-inner">
@@ -99,14 +99,34 @@ const featuredCommand = featuredNpm
       </div>
     </section>
 
-    <section id="stack" class="section-shell section-block stack-section">
-      <div class="section-heading">
-        <h2>Stack</h2>
-        <p>What shows up repeatedly in the work above.</p>
+    <section id="stack" class="section-shell stack-section">
+      <div class="stack-overview">
+        <div class="stack-title-block">
+          <p class="stack-eyebrow mono">Technical foundation</p>
+          <h2>Stack</h2>
+        </div>
+        <p class="stack-summary">
+          The tools and engineering practices I use to turn component ideas
+          into durable, production-ready interfaces.
+        </p>
       </div>
-      <ul class="stack-line" aria-label="Primary stack">
-        {stackLine.map((item) => <li class="mono">{item}</li>)}
-      </ul>
+
+      <div class="stack-grid">
+        {stackGroups.map((group, index) => (
+          <article class="stack-card">
+            <div class="stack-card-heading">
+              <span class="stack-card-index mono">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <h3>{group.title}</h3>
+            </div>
+            <p>{group.description}</p>
+            <ul aria-label={`${group.title} technologies`}>
+              {group.items.map((item) => <li class="mono">{item}</li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
     </section>
 
     {

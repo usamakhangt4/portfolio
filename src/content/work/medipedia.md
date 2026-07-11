@@ -43,4 +43,4 @@ Medipedia uses Next.js and TypeScript to build a focused drug search surface. Th
 
 ## Outcome
 
-This is stronger than a generic product demo because it has a clear user job: search for a medicine and read important details. It is a good flagship app as long as the portfolio wording stays careful: information display, not medical advice.
+The deployed interface gives users a focused way to search for medicines and review dosage, safety, and warning information in a readable layout. Its copy and presentation keep the product framed as an information tool rather than a source of medical advice.

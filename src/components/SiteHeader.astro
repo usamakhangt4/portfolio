@@ -33,8 +33,9 @@ const isActive = (href: string): boolean => {
         class="theme-toggle"
         type="button"
         data-theme-toggle
-        aria-label="Switch color theme"
-        title="Switch color theme"
+        aria-label="Switch to dark theme"
+        aria-pressed="false"
+        title="Switch to dark theme"
       >
         <svg
           class="icon-sun"
@@ -68,16 +69,32 @@ const isActive = (href: string): boolean => {
   </nav>
 </header>
 
-<script>
-  const toggle = document.querySelector("[data-theme-toggle]");
-  toggle?.addEventListener("click", () => {
-    const root = document.documentElement;
-    const next = root.dataset.theme === "dark" ? "light" : "dark";
-    root.dataset.theme = next;
-    try {
-      localStorage.setItem("theme", next);
-    } catch {
-      /* ignore storage failures (e.g. private mode) */
-    }
-  });
+<script is:inline data-astro-rerun>
+  (() => {
+    const toggle = document.querySelector("[data-theme-toggle]");
+
+    const updateToggleState = () => {
+      if (!(toggle instanceof HTMLButtonElement)) return;
+      const current =
+        document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+      const next = current === "dark" ? "light" : "dark";
+      const label = `Switch to ${next} theme`;
+      toggle.setAttribute("aria-label", label);
+      toggle.setAttribute("title", label);
+      toggle.setAttribute("aria-pressed", String(current === "dark"));
+    };
+
+    updateToggleState();
+    toggle?.addEventListener("click", () => {
+      const root = document.documentElement;
+      const next = root.dataset.theme === "dark" ? "light" : "dark";
+      root.dataset.theme = next;
+      try {
+        localStorage.setItem("theme", next);
+      } catch {
+        /* ignore storage failures (e.g. private mode) */
+      }
+      updateToggleState();
+    });
+  })();
 </script>

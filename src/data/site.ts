@@ -2,8 +2,7 @@ import { resolveSiteUrl } from "../lib/site-url";
 
 export const siteConfig = {
   name: "Muhammad Usama Khan",
-  title:
-    "Muhammad Usama Khan — Frontend Engineer | React, TypeScript & Component Libraries",
+  title: "Muhammad Usama Khan - Frontend Engineer",
   description:
     "Frontend engineer. Author of shadcn-virtualized-tree and viewer-360. Builds typed React libraries, Web Components, and Next.js product UIs.",
   url: resolveSiteUrl(),
@@ -23,11 +22,25 @@ export const navItems = [
 ];
 
 /** Short stack line for the homepage — not a skill-card grid. */
-export const stackLine = [
-  "React",
-  "TypeScript",
-  "Next.js",
-  "Web Components",
-  "npm packages",
-  "Firebase",
-];
+export const stackGroups = [
+  {
+    title: "Product interfaces",
+    description: "Typed, responsive product UI from component to route.",
+    items: ["React", "TypeScript", "Next.js", "Tailwind CSS"],
+  },
+  {
+    title: "Component systems",
+    description: "Reusable primitives built to travel across applications.",
+    items: ["Web Components", "shadcn/ui", "npm packages", "Canvas"],
+  },
+  {
+    title: "Quality engineering",
+    description: "Interaction quality that holds up beyond the happy path.",
+    items: ["Accessibility", "Vitest", "Performance", "Type safety"],
+  },
+  {
+    title: "Platform & delivery",
+    description: "Practical tooling for shipping and maintaining products.",
+    items: ["Firebase", "Vercel", "Git", "GitHub Actions"],
+  },
+] as const;

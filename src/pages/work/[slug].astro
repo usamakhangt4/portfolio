@@ -6,7 +6,9 @@ import SiteHeader from "@/components/SiteHeader.astro";
 import { breadcrumbJsonLd, creativeWorkJsonLd } from "@/lib/seo";
 
 export async function getStaticPaths() {
-  const projects = await getCollection("work");
+  const projects = (await getCollection("work")).filter(
+    (project) => !project.data.draft,
+  );
 
   return projects.map((project) => ({
     params: { slug: project.id },
@@ -31,7 +33,7 @@ const { data } = project;
 >
   <SiteHeader />
 
-  <main>
+  <main id="main-content" tabindex="-1">
     <section class="case-hero section-shell">
       <a class="back-link" href="/work">← Work</a>
       <p class="mono-type">{data.type}</p>
@@ -45,20 +47,20 @@ const { data } = project;
       </div>
     </section>
 
-    <section class="case-meta section-shell" aria-label="Project details">
+    <dl class="case-meta section-shell" aria-label="Project details">
       <div>
-        <span>Role</span>
-        <strong>{data.role}</strong>
+        <dt>Role</dt>
+        <dd>{data.role}</dd>
       </div>
       <div>
-        <span>Year</span>
-        <strong>{data.year}</strong>
+        <dt>Year</dt>
+        <dd>{data.year}</dd>
       </div>
       <div>
-        <span>Stack</span>
-        <strong>{data.stack.join(", ")}</strong>
+        <dt>Stack</dt>
+        <dd>{data.stack.join(", ")}</dd>
       </div>
-    </section>
+    </dl>
 
     <section class="section-shell case-layout">
       <aside class="case-sidebar">

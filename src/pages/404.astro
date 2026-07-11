@@ -1,0 +1,28 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SiteFooter from "@/components/SiteFooter.astro";
+import SiteHeader from "@/components/SiteHeader.astro";
+---
+
+<BaseLayout
+  title="Page not found"
+  description="The requested page could not be found."
+  canonicalPath="/404"
+  noIndex
+>
+  <SiteHeader />
+
+  <main id="main-content" tabindex="-1">
+    <section class="case-hero section-shell">
+      <p class="mono-type">404</p>
+      <h1>Page not found</h1>
+      <p>The page may have moved, or the address may be incorrect.</p>
+      <div class="case-actions">
+        <a class="button button-primary" href="/">Go home</a>
+        <a class="button" href="/work">Browse work</a>
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter />
+</BaseLayout>

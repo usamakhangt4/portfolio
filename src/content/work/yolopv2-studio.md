@@ -41,4 +41,4 @@ The project uses Python with Flask, OpenCV, PyTorch, and supporting scientific p
 
 ## Outcome
 
-This project is valuable because it broadens the portfolio beyond frontend-only apps. It shows practical AI-adjacent tooling: wrapping a computer vision model with a usable interface, documenting setup, and making visual model output easier to explore.
+The Flask interface makes YOLOPv2 output easier to explore through media upload, webcam processing, and configurable detection controls. Setup documentation and a visual workflow reduce the effort required to run and inspect the model locally.

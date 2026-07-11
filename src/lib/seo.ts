@@ -34,7 +34,7 @@ export function websiteJsonLd() {
     "@type": "WebSite",
     "@id": absoluteUrl("/#website"),
     url: siteConfig.url,
-    name: siteConfig.title,
+    name: siteConfig.name,
     publisher: { "@id": absoluteUrl("/#person") },
   };
 }
@@ -76,7 +76,7 @@ export function creativeWorkJsonLd(project: CollectionEntry<"work">) {
     description: project.data.summary,
     url: absoluteUrl(`/work/${project.id}`),
     author: { "@id": absoluteUrl("/#person") },
-    datePublished: `${project.data.year}-01-01`,
+    datePublished: project.data.year,
     keywords: project.data.seo.keywords,
   };
 }

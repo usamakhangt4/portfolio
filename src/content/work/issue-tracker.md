@@ -41,4 +41,4 @@ This project uses Next.js App Router, API routes, Prisma schema/migrations, and 
 
 ## Outcome
 
-It is best kept as supporting work. It proves some useful full-stack patterns, but it should not be positioned ahead of the stronger libraries, developer tool, medicine search UI, or computer vision studio.
+The application connects a typed Next.js interface to API routes, Prisma models and migrations, and Zod validation. It provides a complete example of issue creation and management with consistent validation across the UI and server boundary.

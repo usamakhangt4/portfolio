@@ -41,4 +41,4 @@ The CLI is written in Rust and uses `clap` for command-line structure. It reads 
 
 ## Outcome
 
-This is a strong portfolio project because it solves a real developer workflow and works as described. It also proves comfort outside frontend-only work: Rust, local AI tooling, Git automation, tests, install scripts, and release workflows.
+The CLI turns staged Git changes into locally generated commit-message suggestions while preserving a confirmation step before committing. The repository includes tests, installation scripts, and release workflows for a repeatable command-line distribution process.

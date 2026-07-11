@@ -43,4 +43,4 @@ LinkSplash uses Next.js with Firebase services for authentication and persistenc
 
 ## Outcome
 
-This project is useful portfolio proof because it connects frontend polish with product mechanics: auth, database-backed state, interactive editing, and public route generation.
+The deployed app combines Google authentication, Firestore-backed profiles, drag-and-drop editing, QR-code generation, and public profile routes in one end-to-end publishing workflow.

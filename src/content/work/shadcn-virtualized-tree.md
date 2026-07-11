@@ -44,4 +44,4 @@ The implementation separates tree state from rendering so consumers can adopt th
 
 ## Outcome
 
-The package is published on npm with a public playground and test coverage. It works as a strong portfolio signal because it shows API design, package publishing, accessibility, performance, and developer experience in one focused project.
+The package is published on npm with a public playground, documentation, and test coverage. Consumers get a reusable tree API with virtualization, drag-and-drop ordering, tri-state selection, and keyboard support without giving up control of presentation.

@@ -43,4 +43,4 @@ The app uses Next.js routes and local JSON data for Quran content. The work is b
 
 ## Outcome
 
-This belongs in supporting work: it is useful and deployable, but it should not compete with deeper projects like the component libraries, Git CLI, medicine search, or YOLOPv2 studio.
+The deployed reader turns local surah data into a searchable table with expandable verse rows. The result is a compact reading interface that works without depending on a remote content API.

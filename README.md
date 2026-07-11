@@ -2,7 +2,7 @@
 
 Static portfolio built with Astro 7 and Tailwind CSS v4.
 
-Requires Node `>=22.12.0`.
+Requires Node `>=22.12.0 <23`.
 
 ## Scripts
 
@@ -21,4 +21,4 @@ npm run build
 - `src/pages/work/[slug].astro` generates case-study pages.
 - `src/styles/global.css` contains Tailwind v4 and site styling.
 
-Set `SITE_URL` or `PUBLIC_SITE_URL` for production canonical URLs and sitemap output.
+Set `PUBLIC_SITE_URL` (or the legacy `SITE_URL`) for production canonical URLs and sitemap output. Vercel production URLs are detected automatically.
