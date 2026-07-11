@@ -12,9 +12,21 @@ export function personJsonLd() {
     name: siteConfig.name,
     url: siteConfig.url,
     image: absoluteUrl(siteConfig.ogImage),
-    jobTitle: ["Frontend Engineer", "React Developer", "Next.js Developer"],
+    jobTitle: ["Senior Frontend Engineer", "React Developer", "Next.js Developer"],
     description: siteConfig.description,
-    sameAs: [siteConfig.social.github, siteConfig.social.npm],
+    sameAs: [
+      siteConfig.social.github,
+      siteConfig.social.linkedin,
+      siteConfig.social.npm,
+    ],
+    alumniOf: {
+      "@type": "CollegeOrUniversity",
+      name: "COMSATS University Islamabad",
+    },
+    homeLocation: {
+      "@type": "Place",
+      name: siteConfig.location,
+    },
     knowsAbout: [
       "React",
       "TypeScript",

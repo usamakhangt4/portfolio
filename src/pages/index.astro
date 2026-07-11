@@ -5,7 +5,14 @@ import ProjectCard from "@/components/ProjectCard.astro";
 import SiteFooter from "@/components/SiteFooter.astro";
 import SiteHeader from "@/components/SiteHeader.astro";
 import { profilePageJsonLd } from "@/lib/seo";
-import { siteConfig, stackGroups } from "@/data/site";
+import {
+  careerHighlights,
+  education,
+  experience,
+  professionalProjects,
+  siteConfig,
+  stackGroups,
+} from "@/data/site";
 
 const work = (await getCollection("work"))
   .filter((project) => !project.data.draft && project.data.featured)
@@ -43,15 +50,30 @@ const featuredCommand = featuredNpm
     <section class="hero">
       <div class="section-shell">
         <div class="hero-inner">
-          <p class="hero-role mono">Frontend Engineer</p>
+          <p class="hero-role mono">{siteConfig.role}</p>
           <h1>{siteConfig.name}</h1>
           <p class="hero-lede">
-            I publish typed React libraries and ship Next.js product UIs —
-            virtualized trees, Web Components, and tools people can install.
+            I lead frontend delivery for React and Next.js products, build
+            reusable component systems, and publish tools other developers can
+            install.
+          </p>
+          <p class="hero-location mono">
+            {siteConfig.location} / {siteConfig.availability}
           </p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#work">Selected work</a>
-            <a class="button" href={`mailto:${siteConfig.email}`}>Email</a>
+            <a class="button button-primary" href="/work">View work</a>
+            <a
+              class="button"
+              href={siteConfig.resume}
+              target="_blank"
+              rel="noopener noreferrer"
+            >Resume</a>
+            <a
+              class="button button-text"
+              href={siteConfig.social.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+            >LinkedIn ↗</a>
           </div>
         </div>
 
@@ -86,10 +108,80 @@ const featuredCommand = featuredNpm
       </div>
     </section>
 
+    <section class="section-shell career-highlights" aria-label="Career highlights">
+      {careerHighlights.map((item) => (
+        <div class="career-highlight">
+          <strong>{item.value}</strong>
+          <span>{item.label}</span>
+        </div>
+      ))}
+    </section>
+
+    <section id="experience" class="section-shell section-block experience-section">
+      <div class="section-heading section-heading-wide">
+        <p class="section-kicker mono">Professional experience</p>
+        <h2>Seven years of shipping frontend products</h2>
+        <p>
+          From production workflows and analytics dashboards to team leadership
+          and reusable component architecture across remote product teams.
+        </p>
+      </div>
+
+      <div class="experience-list">
+        {experience.map((item, index) => (
+          <article class="experience-item">
+            <div class="experience-meta">
+              <span class="experience-index mono">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <span class="mono">{item.period}</span>
+              <span>{item.location}</span>
+            </div>
+            <div class="experience-content">
+              <h3>{item.role}</h3>
+              <p class="experience-company">{item.company}</p>
+              <p>{item.summary}</p>
+              <ul>
+                {item.highlights.map((highlight) => <li>{highlight}</li>)}
+              </ul>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="professional-work" class="section-shell section-block professional-work-section">
+      <div class="section-heading section-heading-wide">
+        <p class="section-kicker mono">Professional work</p>
+        <h2>Products built inside real teams</h2>
+        <p>
+          Selected commercial and institutional work. Details are intentionally
+          focused on my contribution rather than proprietary implementation.
+        </p>
+      </div>
+
+      <div class="professional-project-grid">
+        {professionalProjects.map((project, index) => (
+          <article class="professional-project-card">
+            <div class="professional-project-heading">
+              <span class="mono">{String(index + 1).padStart(2, "0")}</span>
+              <span class="mono">{project.type}</span>
+            </div>
+            <h3>{project.title}</h3>
+            <p>{project.description}</p>
+            <ul aria-label={`${project.title} stack`}>
+              {project.stack.map((item) => <li class="mono">{item}</li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </section>
+
     <section id="work" class="section-shell section-block">
-      <div class="section-heading">
-        <h2>Selected work</h2>
-        <p>Libraries and products with public source, demos, or live apps.</p>
+      <div class="section-heading section-heading-wide">
+        <p class="section-kicker mono">Open source & independent work</p>
+        <h2>Public proof, not just claims</h2>
+        <p>Libraries and products with source, packages, demos, or live apps.</p>
       </div>
 
       <div class="project-list">
@@ -145,6 +237,15 @@ const featuredCommand = featuredNpm
         </section>
       )
     }
+
+    <section class="section-shell education-section" aria-labelledby="education-title">
+      <div>
+        <p class="section-kicker mono">Education</p>
+        <h2 id="education-title">{education.degree}</h2>
+        <p>{education.school}</p>
+      </div>
+      <span class="education-period mono">{education.period}</span>
+    </section>
   </main>
 
   <SiteFooter />

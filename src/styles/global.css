@@ -239,6 +239,11 @@ ul {
   line-height: 1.55;
 }
 
+.hero-location {
+  color: var(--ink-soft);
+  font-size: 0.75rem;
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -276,6 +281,18 @@ ul {
 .button-primary:focus-visible {
   background: var(--accent);
   border-color: var(--accent);
+}
+
+.button-text {
+  border-color: transparent;
+  color: var(--accent-ink);
+}
+
+.button-text:hover,
+.button-text:focus-visible {
+  border-color: var(--accent);
+  background: transparent;
+  color: var(--accent);
 }
 
 .hero-feature {
@@ -384,6 +401,193 @@ ul {
 .section-heading p {
   color: var(--muted);
   font-size: 0.98rem;
+}
+
+.section-heading-wide {
+  max-width: 52rem;
+}
+
+.section-kicker {
+  color: var(--accent);
+  font-size: 0.72rem !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ——— Career overview ——— */
+
+.career-highlights {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-block: 1px solid var(--line);
+}
+
+.career-highlight {
+  display: grid;
+  gap: 4px;
+  padding: 24px;
+}
+
+.career-highlight + .career-highlight {
+  border-left: 1px solid var(--line);
+}
+
+.career-highlight strong {
+  color: var(--ink);
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.career-highlight span {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+/* ——— Professional experience ——— */
+
+.experience-section {
+  padding-top: 88px;
+}
+
+.experience-list {
+  border-top: 1px solid var(--line);
+}
+
+.experience-item {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.34fr) minmax(0, 1fr);
+  gap: clamp(28px, 6vw, 72px);
+  border-bottom: 1px solid var(--line);
+  padding-block: 32px;
+}
+
+.experience-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.experience-index {
+  margin-bottom: 8px;
+  color: var(--accent);
+}
+
+.experience-content {
+  display: grid;
+  gap: 10px;
+}
+
+.experience-content h3 {
+  font-size: clamp(1.25rem, 2.4vw, 1.65rem);
+  font-weight: 650;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+}
+
+.experience-company {
+  color: var(--accent-ink) !important;
+  font-family: var(--font-mono);
+  font-size: 0.78rem !important;
+}
+
+.experience-content > p:not(.experience-company) {
+  max-width: 48rem;
+  color: var(--muted);
+}
+
+.experience-content ul {
+  display: grid;
+  gap: 7px;
+  margin-top: 4px;
+}
+
+.experience-content li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.experience-content li::before {
+  position: absolute;
+  top: 0.68em;
+  left: 0;
+  width: 6px;
+  height: 1px;
+  background: var(--accent);
+  content: "";
+}
+
+/* ——— Professional work ——— */
+
+.professional-work-section {
+  padding-top: 80px;
+}
+
+.professional-project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.professional-project-card {
+  display: grid;
+  gap: 14px;
+  min-height: 250px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--panel) 76%, transparent);
+  padding: 24px;
+}
+
+.professional-project-card:first-child {
+  grid-column: 1 / -1;
+  min-height: 220px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--accent) 9%, transparent), transparent 48%),
+    var(--panel);
+}
+
+.professional-project-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: var(--muted);
+  font-size: 0.68rem;
+}
+
+.professional-project-heading span:first-child {
+  color: var(--accent);
+}
+
+.professional-project-card h3 {
+  font-size: clamp(1.25rem, 2.4vw, 1.65rem);
+  font-weight: 650;
+  letter-spacing: -0.03em;
+}
+
+.professional-project-card > p {
+  max-width: 46rem;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.professional-project-card ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  align-self: end;
+}
+
+.professional-project-card li {
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 0.72rem;
+  padding-bottom: 2px;
 }
 
 /* ——— Project rows ——— */
@@ -839,6 +1043,41 @@ ul {
   color: var(--muted);
 }
 
+/* ——— Education ——— */
+
+.education-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  align-items: end;
+  margin-top: 48px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--panel) 72%, transparent);
+  padding: 28px 32px;
+}
+
+.education-section > div {
+  display: grid;
+  gap: 8px;
+}
+
+.education-section h2 {
+  font-size: clamp(1.3rem, 2.8vw, 1.75rem);
+  font-weight: 650;
+  letter-spacing: -0.035em;
+}
+
+.education-section > div > p:last-child {
+  color: var(--muted);
+}
+
+.education-period {
+  flex: none;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
 /* ——— Footer ——— */
 
 .site-footer {
@@ -902,6 +1141,26 @@ ul {
 }
 
 @media (max-width: 860px) {
+  .career-highlights {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .career-highlight:nth-child(3) {
+    border-left: 0;
+  }
+
+  .career-highlight:nth-child(n + 3) {
+    border-top: 1px solid var(--line);
+  }
+
+  .professional-project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .professional-project-card:first-child {
+    grid-column: auto;
+  }
+
   .stack-overview {
     grid-template-columns: 1fr;
     gap: 16px;
@@ -957,6 +1216,53 @@ ul {
   .stack-card {
     min-height: 0;
     padding: 18px;
+  }
+
+  .career-highlight {
+    padding: 20px 16px;
+  }
+
+  .career-highlight span {
+    font-size: 0.72rem;
+  }
+
+  .experience-section,
+  .professional-work-section {
+    padding-top: 64px;
+  }
+
+  .experience-item {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding-block: 28px;
+  }
+
+  .experience-meta {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+  }
+
+  .experience-index {
+    width: 100%;
+    margin-bottom: 2px;
+  }
+
+  .professional-project-card,
+  .professional-project-card:first-child {
+    min-height: 0;
+    padding: 20px 18px;
+  }
+
+  .professional-project-heading {
+    align-items: start;
+  }
+
+  .education-section {
+    flex-direction: column;
+    align-items: start;
+    margin-top: 32px;
+    padding: 24px 20px;
   }
 
   .project-row-inner {

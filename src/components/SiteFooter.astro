@@ -6,14 +6,16 @@ import { siteConfig } from "@/data/site";
   <div class="footer-copy">
     <h2>Contact</h2>
     <p>
-      Open to frontend roles and contract work around React libraries,
-      component systems, and product UI.
+      Open to senior frontend roles and contract work around React products,
+      component systems, and data-heavy interfaces.
     </p>
   </div>
 
   <div class="footer-actions" aria-label="Contact links">
     <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+    <a href={siteConfig.social.linkedin} rel="noopener noreferrer">LinkedIn</a>
     <a href={siteConfig.social.github} rel="noopener noreferrer">GitHub</a>
     <a href={siteConfig.social.npm} rel="noopener noreferrer">npm</a>
+    <a href={siteConfig.resume} target="_blank" rel="noopener noreferrer">Resume</a>
   </div>
 </footer>
