@@ -22,6 +22,18 @@ const featured = flagshipWork[0];
 // The featured project is highlighted in the hero, so exclude it from the
 // "Selected work" list below to avoid showing the same project twice.
 const restOfFlagship = flagshipWork.slice(1);
+
+// Show the real install command for the featured package as evidence.
+const featuredNpm = featured?.data.links.find((l) => {
+  try {
+    return new URL(l.href).host.replace(/^www\./, "") === "npmjs.com";
+  } catch {
+    return false;
+  }
+});
+const featuredCommand = featuredNpm
+  ? `npm i ${decodeURIComponent(featuredNpm.href.replace(/\/$/, "").split("/package/")[1] ?? "")}`
+  : null;
 ---
 
 <BaseLayout canonicalPath="/" jsonLd={profilePageJsonLd()}>
@@ -52,11 +64,21 @@ const restOfFlagship = flagshipWork.slice(1);
                   <span></span><span></span><span></span>
                   <code class="mono">{featured.id}</code>
                 </div>
-                <div class="hero-feature-body">
-                  <p class="mono">{featured.data.type}</p>
-                  <strong>{featured.data.title}</strong>
-                  <p>{featured.data.summary}</p>
-                </div>
+              <div class="hero-feature-body">
+                <p class="mono">{featured.data.type}</p>
+                <strong>{featured.data.title}</strong>
+                <p>{featured.data.summary}</p>
+                {
+                  featuredCommand && (
+                    <code class="hero-feature-cmd mono">
+                      <span class="evidence-prompt" aria-hidden="true">
+                        ${" "}
+                      </span>
+                      {featuredCommand}
+                    </code>
+                  )
+                }
+              </div>
               </div>
             </a>
           )

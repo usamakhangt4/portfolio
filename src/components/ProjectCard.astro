@@ -9,10 +9,41 @@ interface Props {
 const { project, index = 0 } = Astro.props;
 const { data } = project;
 const number = String(index + 1).padStart(2, "0");
+
+function hostOf(href: string): string | null {
+  try {
+    return new URL(href).host.replace(/^www\./, "");
+  } catch {
+    return null;
+  }
+}
+
+// Derive a real, evidence-style command line from the project's links:
+//  - published npm package -> `npm i <pkg>`
+//  - otherwise a GitHub repo -> `owner/repo`
+const npmLink = data.links.find((l) => hostOf(l.href) === "npmjs.com");
+const githubLink = data.links.find((l) => hostOf(l.href) === "github.com");
+
+// `command` is a real, runnable install line (npm packages only).
+// `sourceLabel` identifies the package/repo in the panel's title bar.
+let command: string | null = null;
+let sourceLabel = project.id;
+if (npmLink) {
+  const pkg = decodeURIComponent(
+    npmLink.href.replace(/\/$/, "").split("/package/")[1] ?? "",
+  );
+  if (pkg) {
+    command = `npm i ${pkg}`;
+    sourceLabel = pkg;
+  }
+} else if (githubLink) {
+  const repo = new URL(githubLink.href).pathname.replace(/^\/|\/$/g, "");
+  if (repo) sourceLabel = repo;
+}
 ---
 
 <article class="project-row" data-tier={data.tier ?? "flagship"}>
-  <a class="project-row-link" href={`/work/${project.id}`}>
+  <div class="project-row-inner">
     <div class="project-row-meta">
       <span class="project-index mono">{number}</span>
       <span class="project-type mono">{data.type}</span>
@@ -20,24 +51,56 @@ const number = String(index + 1).padStart(2, "0");
 
     <div class="project-row-main">
       <div class="project-row-copy">
-        <h3>{data.title}</h3>
+        <h3>
+          <a class="project-title-link" href={`/work/${project.id}`}>
+            {data.title}
+          </a>
+        </h3>
         <p>{data.summary}</p>
         <ul class="stack-inline" aria-label={`${data.title} stack`}>
           {data.stack.slice(0, 5).map((item) => <li class="mono">{item}</li>)}
         </ul>
       </div>
 
-      <div class="project-preview" aria-hidden="true" data-accent={index % 3}>
+      <div class="project-evidence" data-accent={index % 3}>
         <div class="preview-chrome">
           <span></span><span></span><span></span>
+          <code class="mono">{sourceLabel}</code>
         </div>
-        <div class="preview-body">
-          <strong class="mono">{project.id}</strong>
-          <span class="mono">{data.year} · {data.role}</span>
+        <div class="evidence-body">
+          {
+            command && (
+              <code class="evidence-cmd mono">
+                <span class="evidence-prompt" aria-hidden="true">
+                  ${" "}
+                </span>
+                {command}
+              </code>
+            )
+          }
+          {
+            data.links.length > 0 && (
+              <ul class="evidence-links">
+                {data.links.map((link) => (
+                  <li>
+                    <a
+                      class="evidence-link mono"
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {link.label}
+                      <span aria-hidden="true"> ↗</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )
+          }
         </div>
       </div>
     </div>
 
     <span class="project-arrow mono" aria-hidden="true">→</span>
-  </a>
+  </div>
 </article>
