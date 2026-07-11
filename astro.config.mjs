@@ -1,6 +1,7 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
+import vercel from "@astrojs/vercel";
 
 function resolveSite() {
   const explicit = process.env.PUBLIC_SITE_URL ?? process.env.SITE_URL;
@@ -15,6 +16,9 @@ export default defineConfig({
   site: resolveSite(),
   trailingSlash: "never",
   integrations: [sitemap()],
+  adapter: vercel({
+    webAnalytics: { enabled: true },
+  }),
   vite: {
     plugins: [tailwindcss()],
   },
