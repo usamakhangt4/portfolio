@@ -7,6 +7,8 @@ year: "2024"
 order: 9
 tier: "supporting"
 featured: true
+# Temporarily keep this case study out of the public portfolio.
+draft: true
 stack:
   - Next.js
   - TypeScript
