@@ -4,9 +4,11 @@ summary: "A typed weather search interface supporting city, ZIP code, and coordi
 role: "Frontend engineer"
 type: "Weather data application"
 year: "2022"
-order: 9
+order: 13
 tier: "supporting"
-featured: true
+featured: false
+# Kept in source, hidden from listings and generated pages.
+draft: true
 stack:
   - Next.js
   - TypeScript

@@ -12,7 +12,7 @@ export function personJsonLd() {
     name: siteConfig.name,
     url: siteConfig.url,
     image: absoluteUrl(siteConfig.ogImage),
-    jobTitle: ["Senior Frontend Engineer", "React Developer", "Next.js Developer"],
+    jobTitle: ["Applied AI Engineer", "Senior Frontend Developer"],
     description: siteConfig.description,
     sameAs: [
       siteConfig.social.github,
@@ -28,15 +28,17 @@ export function personJsonLd() {
       name: siteConfig.location,
     },
     knowsAbout: [
+      "Applied AI",
+      "Computer Vision",
+      "Local GPU Inference",
       "React",
       "TypeScript",
       "Next.js",
+      "Vue",
+      "FastAPI",
       "Web Components",
-      "Component Libraries",
-      "npm",
-      "Accessibility",
-      "Performance Optimization",
-      "Firebase",
+      "Full-Stack Development",
+      "Mobile Apps",
     ],
   };
 }
@@ -88,7 +90,7 @@ export function creativeWorkJsonLd(project: CollectionEntry<"work">) {
     description: project.data.summary,
     url: absoluteUrl(`/work/${project.id}`),
     author: { "@id": absoluteUrl("/#person") },
-    datePublished: project.data.year,
+    ...(project.data.year ? { datePublished: project.data.year } : {}),
     keywords: project.data.seo.keywords,
   };
 }

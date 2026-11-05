@@ -7,9 +7,9 @@ import SiteHeader from "@/components/SiteHeader.astro";
 import { profilePageJsonLd } from "@/lib/seo";
 import {
   careerHighlights,
+  earlierProfessionalProjects,
   education,
   experience,
-  professionalProjects,
   siteConfig,
   stackGroups,
 } from "@/data/site";
@@ -18,29 +18,25 @@ const work = (await getCollection("work"))
   .filter((project) => !project.data.draft && project.data.featured)
   .sort((a, b) => a.data.order - b.data.order);
 
-const flagshipWork = work.filter(
+const companyWork = work.filter((project) => project.data.kind === "company");
+const publicWork = work.filter((project) => project.data.kind !== "company");
+
+const flagshipWork = publicWork.filter(
   (project) => (project.data.tier ?? "flagship") === "flagship",
 );
-const supportingWork = work.filter(
+const supportingWork = publicWork.filter(
   (project) => project.data.tier === "supporting",
 );
 
-const featured = flagshipWork[0];
-// The featured project is highlighted in the hero, so exclude it from the
-// "Selected work" list below to avoid showing the same project twice.
-const restOfFlagship = flagshipWork.slice(1);
-
-// Show the real install command for the featured package as evidence.
-const featuredNpm = featured?.data.links.find((l) => {
-  try {
-    return new URL(l.href).host.replace(/^www\./, "") === "npmjs.com";
-  } catch {
-    return false;
-  }
+const featuredIds = ["yolopv2-studio", "corpo-braindance"] as const;
+const featuredProjects = featuredIds.flatMap((id) => {
+  const project = flagshipWork.find((item) => item.id === id);
+  return project ? [project] : [];
 });
-const featuredCommand = featuredNpm
-  ? `npm i ${decodeURIComponent(featuredNpm.href.replace(/\/$/, "").split("/package/")[1] ?? "")}`
-  : null;
+
+function liveDemo(links: { label: string; href: string }[]) {
+  return links.find((link) => link.label.toLowerCase().includes("live")) ?? null;
+}
 ---
 
 <BaseLayout canonicalPath="/" jsonLd={profilePageJsonLd()}>
@@ -52,11 +48,7 @@ const featuredCommand = featuredNpm
         <div class="hero-inner">
           <p class="hero-role mono">{siteConfig.role}</p>
           <h1>{siteConfig.name}</h1>
-          <p class="hero-lede">
-            I lead frontend delivery for React and Next.js products, build
-            reusable component systems, and publish tools other developers can
-            install.
-          </p>
+          <p class="hero-lede">{siteConfig.lede}</p>
           <p class="hero-location mono">
             {siteConfig.location} / {siteConfig.availability}
           </p>
@@ -74,35 +66,56 @@ const featuredCommand = featuredNpm
               target="_blank"
               rel="noopener noreferrer"
             >LinkedIn ↗</a>
+            <a
+              class="button button-text"
+              href={siteConfig.social.github}
+              target="_blank"
+              rel="noopener noreferrer"
+            >GitHub ↗</a>
           </div>
         </div>
 
         {
-          featured && (
-            <a class="hero-feature" href={`/work/${featured.id}`}>
-              <div class="hero-feature-label mono">Featured</div>
-              <div class="hero-feature-frame">
-                <div class="preview-chrome" aria-hidden="true">
-                  <span></span><span></span><span></span>
-                  <code class="mono">{featured.id}</code>
-                </div>
-              <div class="hero-feature-body">
-                <p class="mono">{featured.data.type}</p>
-                <strong>{featured.data.title}</strong>
-                <p>{featured.data.summary}</p>
-                {
-                  featuredCommand && (
-                    <code class="hero-feature-cmd mono">
-                      <span class="evidence-prompt" aria-hidden="true">
-                        ${" "}
-                      </span>
-                      {featuredCommand}
-                    </code>
-                  )
-                }
+          featuredProjects.length > 0 && (
+            <div class="hero-features">
+              <p class="hero-feature-label mono">Featured</p>
+              <div class="hero-feature-grid">
+                {featuredProjects.map((project) => {
+                  const demo = liveDemo(project.data.links);
+                  return (
+                    <article class="hero-feature">
+                      <div class="hero-feature-frame">
+                        <div class="preview-chrome" aria-hidden="true">
+                          <span></span><span></span><span></span>
+                          <code class="mono">{project.id}</code>
+                        </div>
+                        <div class="hero-feature-body">
+                          <p class="mono">{project.data.type}</p>
+                          <a class="hero-feature-title" href={`/work/${project.id}`}>
+                            {project.data.title}
+                          </a>
+                          <p>{project.data.summary}</p>
+                          {
+                            demo && (
+                              <div class="hero-feature-actions">
+                                <a
+                                  class="button"
+                                  href={demo.href}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                >
+                                  Live demo
+                                </a>
+                              </div>
+                            )
+                          }
+                        </div>
+                      </div>
+                    </article>
+                  );
+                })}
               </div>
-              </div>
-            </a>
+            </div>
           )
         }
       </div>
@@ -120,10 +133,10 @@ const featuredCommand = featuredNpm
     <section id="experience" class="section-shell section-block experience-section">
       <div class="section-heading section-heading-wide">
         <p class="section-kicker mono">Professional experience</p>
-        <h2>Seven years of shipping frontend products</h2>
+        <h2>Seven years of software engineering</h2>
         <p>
-          From production workflows and analytics dashboards to team leadership
-          and reusable component architecture across remote product teams.
+          Frontend interfaces, full-stack applications, and applied AI systems
+          shipped as product work.
         </p>
       </div>
 
@@ -153,18 +166,36 @@ const featuredCommand = featuredNpm
     <section id="professional-work" class="section-shell section-block professional-work-section">
       <div class="section-heading section-heading-wide">
         <p class="section-kicker mono">Professional work</p>
-        <h2>Products built inside real teams</h2>
+        <h2>Company systems</h2>
         <p>
-          Selected commercial and institutional work. Details are intentionally
-          focused on my contribution rather than proprietary implementation.
+          Applied AI and full-stack product work, then earlier interface-heavy
+          products.
         </p>
       </div>
 
       <div class="professional-project-grid">
-        {professionalProjects.map((project, index) => (
+        {companyWork.map((project, index) => (
           <article class="professional-project-card">
             <div class="professional-project-heading">
               <span class="mono">{String(index + 1).padStart(2, "0")}</span>
+              <span class="mono">{project.data.type}</span>
+            </div>
+            <h3>{project.data.title}</h3>
+            <p>{project.data.summary}</p>
+            <ul aria-label={`${project.data.title} stack`}>
+              {project.data.stack.map((item) => <li class="mono">{item}</li>)}
+            </ul>
+            <a class="professional-project-more mono" href={`/work/${project.id}`}>
+              Case study
+            </a>
+          </article>
+        ))}
+        {earlierProfessionalProjects.map((project, index) => (
+          <article class="professional-project-card">
+            <div class="professional-project-heading">
+              <span class="mono">
+                {String(companyWork.length + index + 1).padStart(2, "0")}
+              </span>
               <span class="mono">{project.type}</span>
             </div>
             <h3>{project.title}</h3>
@@ -181,11 +212,14 @@ const featuredCommand = featuredNpm
       <div class="section-heading section-heading-wide">
         <p class="section-kicker mono">Open source & independent work</p>
         <h2>Public proof, not just claims</h2>
-        <p>Libraries and products with source, packages, demos, or live apps.</p>
+        <p>
+          Computer vision tools, local models, and libraries with public
+          source, packages, or samples.
+        </p>
       </div>
 
       <div class="project-list">
-        {restOfFlagship.map((project, index) => (
+        {flagshipWork.map((project, index) => (
           <ProjectCard project={project} index={index} />
         ))}
       </div>
@@ -198,8 +232,8 @@ const featuredCommand = featuredNpm
           <h2>Stack</h2>
         </div>
         <p class="stack-summary">
-          The tools and engineering practices I use to turn component ideas
-          into durable, production-ready interfaces.
+          Computer vision, local inference, and the frontend, backend, mobile,
+          and delivery skills behind the products.
         </p>
       </div>
 

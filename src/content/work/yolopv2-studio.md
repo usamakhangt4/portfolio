@@ -1,6 +1,6 @@
 ---
 title: "YOLOPv2-Studio"
-summary: "A Python and Flask studio interface for YOLOPv2 autonomous driving perception tasks, including media upload, webcam processing, and detection controls."
+summary: "A Python and Flask studio for YOLOPv2 perception: object detection, lane detection, and drivable-area segmentation, with image upload, a demo image, and webcam processing."
 role: "AI tooling builder"
 type: "Computer vision studio"
 year: "2025"
@@ -14,9 +14,9 @@ stack:
   - PyTorch
   - YOLOPv2
 highlights:
-  - "Built a web interface around YOLOPv2 object detection, lane detection, and drivable-area segmentation tasks."
-  - "Supported image upload, demo media, webcam processing, threshold controls, and FPS display."
-  - "Documented setup across Windows, macOS, and Linux with screenshots of the studio UI."
+  - "Web interface for YOLOPv2 object detection, lane detection, and drivable-area segmentation."
+  - "Image upload, a bundled demo image, webcam processing, confidence and IoU thresholds, and an FPS counter."
+  - "Windows, macOS, and Linux setup, with automatic CPU, CUDA, or Apple MPS device selection."
 links:
   - label: "GitHub"
     href: "https://github.com/usamakhangt4/YOLOPv2-Studio"
@@ -37,7 +37,7 @@ Computer vision models are often hard to inspect unless you are comfortable with
 
 ## Approach
 
-The project uses Python with Flask, OpenCV, PyTorch, and supporting scientific packages. The studio provides upload flows, demo media, webcam processing, configurable thresholds, task toggles, and an FPS display for practical model interaction.
+The project uses Python with Flask, OpenCV, and PyTorch. The studio accepts an uploaded image, a bundled demo image, or a webcam. Task toggles cover object detection, drivable area, and lane detection. Confidence and IoU thresholds are adjustable, and an FPS counter shows throughput. On startup it selects CPU, CUDA, or Apple Metal (MPS) from the machine it is running on. Setup is documented for Windows, macOS, and Linux.
 
 ## Outcome
 

@@ -9,8 +9,12 @@ const work = defineCollection({
     summary: z.string(),
     role: z.string(),
     type: z.string(),
-    year: z.string().regex(/^\d{4}$/, "Year must use YYYY format"),
+    year: z
+      .string()
+      .regex(/^\d{4}$/, "Year must use YYYY format")
+      .optional(),
     order: z.number(),
+    kind: z.enum(["company", "public"]).default("public"),
     tier: z.enum(["flagship", "supporting"]).default("flagship"),
     featured: z.boolean().default(true),
     draft: z.boolean().default(false),

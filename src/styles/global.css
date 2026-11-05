@@ -322,10 +322,21 @@ ul {
   color: var(--accent);
 }
 
-.hero-feature {
-  display: block;
+.hero-features {
   margin-top: 48px;
   animation: rise 900ms 120ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.hero-feature {
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .hero-feature-label {
@@ -335,6 +346,9 @@ ul {
 }
 
 .hero-feature-frame {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 4px;
@@ -372,7 +386,9 @@ ul {
 }
 
 .hero-feature-body {
-  display: grid;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
   gap: 10px;
   padding: 28px 28px 32px;
   background:
@@ -385,11 +401,33 @@ ul {
   font-size: 0.75rem;
 }
 
-.hero-feature-body strong {
-  font-size: clamp(1.5rem, 3vw, 2rem);
+.hero-feature-title {
+  color: inherit;
+  font-size: clamp(1.35rem, 2.4vw, 1.7rem);
   font-weight: 650;
   letter-spacing: -0.03em;
   line-height: 1.15;
+}
+
+.hero-feature-title::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.hero-feature-actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+.hero-feature-actions .button {
+  min-height: 36px;
+  font-size: 0.82rem;
 }
 
 .hero-feature-body p {
@@ -617,6 +655,21 @@ ul {
   padding-bottom: 2px;
 }
 
+.professional-project-more {
+  justify-self: start;
+  width: fit-content;
+  border-bottom: 1px solid var(--line);
+  color: var(--accent-ink);
+  font-size: 0.78rem;
+  padding-bottom: 1px;
+}
+
+.professional-project-more:hover,
+.professional-project-more:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 /* ——— Project rows ——— */
 
 .project-list {
@@ -680,6 +733,10 @@ ul {
   grid-template-columns: minmax(0, 1.1fr) minmax(180px, 0.9fr);
   gap: 24px;
   align-items: start;
+}
+
+.project-row-main:not(:has(.project-evidence)) {
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .project-row-copy {
@@ -967,7 +1024,7 @@ ul {
 
 .case-meta {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
   gap: 1px;
   border: 1px solid var(--line);
   background: var(--line);
@@ -1168,6 +1225,10 @@ ul {
 }
 
 @media (max-width: 860px) {
+  .hero-feature-grid {
+    grid-template-columns: 1fr;
+  }
+
   .career-highlights {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1298,6 +1359,10 @@ ul {
 
   .hero {
     padding-block: 48px 32px;
+  }
+
+  .hero-feature-grid {
+    grid-template-columns: 1fr;
   }
 
   .section-block {
