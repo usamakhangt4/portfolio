@@ -62,44 +62,46 @@ if (npmLink) {
         </ul>
       </div>
 
-      <div class="project-evidence" data-accent={index % 3}>
-        <div class="preview-chrome">
-          <span></span><span></span><span></span>
-          <code class="mono">{sourceLabel}</code>
+      {(command || data.links.length > 0) && (
+        <div class="project-evidence" data-accent={index % 3}>
+          <div class="preview-chrome">
+            <span></span><span></span><span></span>
+            <code class="mono">{sourceLabel}</code>
+          </div>
+          <div class="evidence-body">
+            {
+              command && (
+                <code class="evidence-cmd mono">
+                  <span class="evidence-prompt" aria-hidden="true">
+                    ${" "}
+                  </span>
+                  {command}
+                </code>
+              )
+            }
+            {
+              data.links.length > 0 && (
+                <ul class="evidence-links">
+                  {data.links.map((link) => (
+                    <li>
+                      <a
+                        class="evidence-link mono"
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${data.title}: ${link.label} (opens in a new tab)`}
+                      >
+                        {link.label}
+                        <span aria-hidden="true"> ↗</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )
+            }
+          </div>
         </div>
-        <div class="evidence-body">
-          {
-            command && (
-              <code class="evidence-cmd mono">
-                <span class="evidence-prompt" aria-hidden="true">
-                  ${" "}
-                </span>
-                {command}
-              </code>
-            )
-          }
-          {
-            data.links.length > 0 && (
-              <ul class="evidence-links">
-                {data.links.map((link) => (
-                  <li>
-                    <a
-                      class="evidence-link mono"
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`${data.title}: ${link.label} (opens in a new tab)`}
-                    >
-                      {link.label}
-                      <span aria-hidden="true"> ↗</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            )
-          }
-        </div>
-      </div>
+      )}
     </div>
 
     <span class="project-arrow mono" aria-hidden="true">→</span>

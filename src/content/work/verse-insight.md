@@ -4,7 +4,7 @@ summary: "A simple Next.js Quran reading interface with local surah data, table-
 role: "Frontend engineer"
 type: "Next.js product UI"
 year: "2026"
-order: 8
+order: 12
 tier: "supporting"
 featured: true
 stack:

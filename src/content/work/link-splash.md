@@ -4,9 +4,11 @@ summary: "A link-in-bio product built with Next.js, Google authentication, Fires
 role: "Frontend engineer"
 type: "Next.js SaaS-style app"
 year: "2024"
-order: 7
+order: 11
 tier: "supporting"
-featured: true
+featured: false
+# Kept in source, hidden from listings and generated pages.
+draft: true
 stack:
   - Next.js
   - React

@@ -4,7 +4,7 @@ summary: "A Rust CLI that reads staged Git changes, asks a local Ollama model fo
 role: "CLI tool author"
 type: "Developer tooling"
 year: "2026"
-order: 3
+order: 10
 tier: "flagship"
 featured: true
 stack:
@@ -16,7 +16,7 @@ stack:
 highlights:
   - "Built a working command-line tool around a real developer workflow."
   - "Reads staged diffs, filters noisy artifacts, and generates commit messages through a local Ollama model."
-  - "Ships with integration tests, install scripts, and GitHub release workflows."
+  - "Ships with tests, install scripts for macOS, Linux, and Windows, and GitHub releases."
 links:
   - label: "GitHub"
     href: "https://github.com/usamakhangt4/git-auto-commit"
@@ -41,4 +41,4 @@ The CLI is written in Rust and uses `clap` for command-line structure. It reads 
 
 ## Outcome
 
-The CLI turns staged Git changes into locally generated commit-message suggestions while preserving a confirmation step before committing. The repository includes tests, installation scripts, and release workflows for a repeatable command-line distribution process.
+The CLI turns staged Git changes into locally generated commit-message suggestions and asks for confirmation before committing. It can auto-select an installed Ollama chat model, skip common build artifacts and lockfiles, and summarize a diff that would exceed 8,000 characters. The repository includes tests, install scripts, and GitHub releases.

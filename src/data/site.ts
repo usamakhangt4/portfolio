@@ -2,14 +2,15 @@ import { resolveSiteUrl } from "../lib/site-url";
 
 export const siteConfig = {
   name: "Muhammad Usama Khan",
-  role: "Senior Frontend Engineer",
-  title: "Muhammad Usama Khan - Senior Frontend Engineer",
+  role: "Applied AI Engineer",
+  title: "Muhammad Usama Khan - Applied AI Engineer",
   description:
-    "Senior frontend engineer with 7+ years building React and Next.js products, reusable component systems, data-heavy interfaces, and open-source libraries.",
+    "Applied AI engineer building computer vision systems, local GPU inference pipelines, and full-stack applications, backed by 7+ years of software engineering experience.",
+  lede: "I build computer vision systems, local GPU inference pipelines, and full-stack applications—backed by 7+ years of software engineering experience.",
   url: resolveSiteUrl(),
   email: "usamakhangt4@gmail.com",
   location: "Wah Cantt, Pakistan",
-  availability: "Remote collaboration worldwide",
+  availability: "Open to applied AI and full-stack roles",
   resume: "/muhammad-usama-khan-resume.pdf",
   // Same-origin Open Graph image (1200×630). Override via absolute URL if needed.
   ogImage: "/og.png",
@@ -28,9 +29,9 @@ export const navItems = [
 ];
 
 export const careerHighlights = [
-  { value: "7+", label: "Years in frontend delivery" },
-  { value: "4", label: "Professional product teams" },
-  { value: "3", label: "Frontend engineers mentored" },
+  { value: "7+", label: "Years of software engineering" },
+  { value: "CV", label: "Computer vision systems" },
+  { value: "GPU", label: "Local inference pipelines" },
   { value: "2", label: "Published component libraries" },
 ] as const;
 
@@ -39,13 +40,14 @@ export const experience = [
     company: "Victoria Plum",
     role: "Senior Frontend Developer",
     location: "Remote, England",
-    period: "Jul 2024 - Present",
+    period: "Jul 2024–Present",
     summary:
-      "Leading frontend delivery for Giolindo, a modern React and Next.js product, while mentoring a three-person frontend team.",
+      "Applied AI and full-stack product work across computer vision, a commerce platform, product viewing, and Herd WMS, while mentoring other engineers.",
     highlights: [
-      "Own component structure, UI quality, and delivery planning across a remote product team.",
-      "Translate product and design requirements into reusable TypeScript and Tailwind interfaces.",
-      "Strengthen code quality with reviews, ESLint, Prettier, pre-commit checks, and Turbopack workflows.",
+      "Lumenweave: computer vision and local GPU inference, from a React/Vite and Three.js embed through a FastAPI photo API to a separate Windows GPU service.",
+      "Global Foods: a Laravel and Vue full-stack platform, with customer, EPOS, and operations apps plus Ionic Android and iOS builds.",
+      "Giolindo: a 32-image Canvas rotation viewer and a separate 3D/AR configurator with runtime material switching.",
+      "Herd WMS: NestJS, PostgreSQL, Redis, Prisma, and WebSockets.",
     ],
   },
   {
@@ -89,14 +91,7 @@ export const experience = [
   },
 ] as const;
 
-export const professionalProjects = [
-  {
-    title: "Giolindo",
-    type: "Modern product application",
-    description:
-      "Frontend delivery, reusable UI architecture, team mentoring, and development-workflow improvements for a React and Next.js product.",
-    stack: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Turbopack"],
-  },
+export const earlierProfessionalProjects = [
   {
     title: "Next Order Control Panel",
     type: "Restaurant operations platform",
@@ -133,26 +128,66 @@ export const education = {
   period: "2016 - 2020",
 } as const;
 
-/** Short stack line for the homepage — not a skill-card grid. */
+/** Skill groups shown on the homepage. Every item is backed by shipped work. */
 export const stackGroups = [
   {
-    title: "Product interfaces",
-    description: "Typed, responsive product UI from component to route.",
-    items: ["React", "TypeScript", "Next.js", "Tailwind CSS"],
+    title: "Computer Vision",
+    description: "Segmentation, depth, detection, and inpainting.",
+    items: ["SAM 3", "Depth Anything V2", "YOLOPv2", "OpenCV", "Inpainting"],
   },
   {
-    title: "State & data",
-    description: "Predictable application state and resilient API-driven flows.",
-    items: ["Redux", "Zustand", "TanStack Query", "SWR", "REST APIs"],
+    title: "Local AI/Inference",
+    description: "Models and inference services running on local GPUs.",
+    items: [
+      "PyTorch",
+      "FLUX.2 [klein] 4B",
+      "Nunchaku INT4",
+      "KittenTTS 2",
+      "Ollama",
+      "CUDA",
+    ],
   },
   {
-    title: "Component systems",
-    description: "Reusable primitives built to travel across applications.",
-    items: ["Web Components", "shadcn/ui", "Material UI", "Ant Design", "npm"],
+    title: "Frontend",
+    description:
+      "Typed product UI, including component libraries and data-heavy screens.",
+    items: [
+      "React",
+      "TypeScript",
+      "Next.js",
+      "Vue",
+      "Vite",
+      "Tailwind CSS",
+      "Three.js",
+      "Web Components",
+      "shadcn/ui",
+      "Redux",
+      "TanStack Query",
+    ],
   },
   {
-    title: "Quality & delivery",
-    description: "Interaction quality and tooling that hold up beyond the happy path.",
-    items: ["Accessibility", "Vitest", "Jest", "Cypress", "GitHub Actions"],
+    title: "Backend & Data",
+    description: "APIs, databases, and realtime services behind the products.",
+    items: [
+      "FastAPI",
+      "Flask",
+      "Laravel",
+      "MariaDB",
+      "NestJS",
+      "PostgreSQL",
+      "Redis",
+      "Prisma",
+      "WebSockets",
+    ],
+  },
+  {
+    title: "Mobile",
+    description: "Android and iOS builds of the web product.",
+    items: ["Ionic", "Capacitor", "Android", "iOS"],
+  },
+  {
+    title: "DevOps & Testing",
+    description: "Containers, checks, and the test tooling around delivery.",
+    items: ["Docker", "GitHub Actions", "Vitest", "Jest", "Cypress", "ESLint"],
   },
 ] as const;

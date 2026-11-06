@@ -4,7 +4,7 @@ summary: "A medicine information search interface for prescription and over-the-
 role: "Frontend engineer"
 type: "Medicine search UI"
 year: "2025"
-order: 4
+order: 11
 tier: "flagship"
 featured: true
 stack:

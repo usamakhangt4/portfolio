@@ -9,17 +9,19 @@ const projects = (await getCollection("work"))
   .filter((project) => !project.data.draft)
   .sort((a, b) => a.data.order - b.data.order);
 
-const flagshipWork = projects.filter(
+const companyWork = projects.filter((project) => project.data.kind === "company");
+const publicProjects = projects.filter((project) => project.data.kind !== "company");
+const flagshipWork = publicProjects.filter(
   (project) => (project.data.tier ?? "flagship") === "flagship",
 );
-const supportingWork = projects.filter(
+const supportingWork = publicProjects.filter(
   (project) => project.data.tier === "supporting",
 );
 ---
 
 <BaseLayout
   title="Work"
-  description="Selected case studies from Muhammad Usama Khan — React libraries, Web Components, Next.js apps, and developer tools."
+  description="Case studies from Muhammad Usama Khan — applied AI systems, full-stack products, and public computer-vision and frontend tools."
   canonicalPath="/work"
 >
   <SiteHeader />
@@ -28,15 +30,31 @@ const supportingWork = projects.filter(
     <section class="section-shell work-page-intro">
       <h1>Work</h1>
       <p>
-        Case studies with public source, demos, or live apps. Flagship first,
-        then supporting projects.
+        Company systems first, then public libraries and tools. Supporting
+        projects follow.
       </p>
     </section>
 
+    {
+      companyWork.length > 0 && (
+        <section class="section-shell section-block">
+          <div class="section-heading">
+            <h2>Company work</h2>
+            <p>Applied AI and full-stack systems.</p>
+          </div>
+          <div class="project-list">
+            {companyWork.map((project, index) => (
+              <ProjectCard project={project} index={index} />
+            ))}
+          </div>
+        </section>
+      )
+    }
+
     <section class="section-shell section-block">
       <div class="section-heading">
-        <h2>Flagship work</h2>
-        <p>Primary libraries, tools, and product case studies.</p>
+        <h2>Public work</h2>
+        <p>Libraries and tools with source, packages, or samples.</p>
       </div>
       <div class="project-list">
         {flagshipWork.map((project, index) => (

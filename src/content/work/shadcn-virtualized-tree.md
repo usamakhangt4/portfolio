@@ -4,7 +4,7 @@ summary: "A publishable React tree component with virtualization, drag-and-drop 
 role: "Library author"
 type: "Open-source React package"
 year: "2024"
-order: 1
+order: 9
 featured: true
 stack:
   - React
