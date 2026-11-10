@@ -28,7 +28,12 @@ const supportingWork = publicWork.filter(
   (project) => project.data.tier === "supporting",
 );
 
-const featuredIds = ["corpo-braindance", "shadcn-virtualized-tree"] as const;
+const featuredIds = [
+  "corpo-braindance",
+  "yolopv2-studio",
+  "kitten-tts-webui",
+  "shadcn-virtualized-tree",
+] as const;
 const featuredProjects = featuredIds.flatMap((id) => {
   const project = flagshipWork.find((item) => item.id === id);
   return project ? [project] : [];

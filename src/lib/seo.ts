@@ -13,7 +13,7 @@ export function personJsonLd() {
     alternateName: ["Muhammad Usama Bin Akhtar Khan", "Muhammad Usama Khan"],
     url: siteConfig.url,
     image: absoluteUrl(siteConfig.ogImage),
-    jobTitle: ["Senior Frontend Engineer", "Senior Software Engineer"],
+    jobTitle: ["Applied AI Engineer", "Senior Software Engineer"],
     description: siteConfig.description,
     sameAs: [
       siteConfig.social.github,
