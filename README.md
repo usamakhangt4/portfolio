@@ -1,4 +1,4 @@
-# Muhammad Usama Khan Portfolio
+# Usama Khan Portfolio
 
 Static portfolio built with Astro 7 and Tailwind CSS v4.
 

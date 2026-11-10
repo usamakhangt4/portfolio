@@ -1,7 +1,7 @@
 ---
 title: "Giolindo"
 summary: "A React and Next.js product with two viewing systems: a 32-image frame-based Canvas rotation viewer, and a separate 3D/AR configurator with runtime materials."
-role: "Senior Frontend Developer"
+role: "Senior Software Engineer, frontend lead"
 type: "Product rotation and 3D/AR"
 order: 3
 kind: company
@@ -15,7 +15,7 @@ stack:
   - viewer-360
   - Canvas
 highlights:
-  - "Frontend delivery for the React and Next.js product at Victoria Plum, Jul 2024–Present."
+  - "Frontend delivery for the React and Next.js product, built at FOCUS, Jul 2024 – Present."
   - "A 32-image, frame-based Canvas rotation viewer powered by the public viewer-360 library."
   - "A separate 3D/AR configurator: product models and materials, textures stripped on save, materials applied at runtime, with AR viewing."
 links:
@@ -40,7 +40,7 @@ Giolindo needs shoppers to inspect a product by rotating through photographs, an
 
 ## Contribution
 
-I lead frontend delivery for this React and Next.js product at Victoria Plum (Jul 2024–Present). That includes component structure, TypeScript and Tailwind interfaces, and mentoring other engineers. The viewing work below is part of that product.
+I lead frontend delivery for this React and Next.js product at FOCUS (Jul 2024 – Present). That includes component structure, TypeScript and Tailwind interfaces, and mentoring other engineers. The viewing work below is part of that product.
 
 ## Frame-based rotation
 

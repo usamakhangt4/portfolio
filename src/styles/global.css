@@ -1478,3 +1478,7 @@ ul {
     --chrome-dot: #3a414b;
   }
 }
+
+@media (max-width: 480px) {
+  .hero-actions { display: grid; grid-template-columns: 1fr 1fr; }
+}

@@ -4,7 +4,7 @@ summary: "A Python and Flask studio for YOLOPv2 perception: object detection, la
 role: "AI tooling builder"
 type: "Computer vision studio"
 year: "2025"
-order: 5
+order: 9
 tier: "flagship"
 featured: true
 stack:

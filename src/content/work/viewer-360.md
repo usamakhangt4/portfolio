@@ -21,7 +21,7 @@ links:
     href: "https://github.com/usamakhangt4/viewer-360"
   - label: "npm"
     href: "https://www.npmjs.com/package/@usamakhangt4/viewer-360"
-  - label: "Demo"
+  - label: "Live demo"
     href: "https://usamakhangt4.github.io/viewer-360/demo/"
 seo:
   title: "viewer-360 Case Study"

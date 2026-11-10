@@ -1,8 +1,8 @@
 ---
 title: "Herd WMS"
-summary: "A company system built with NestJS, PostgreSQL, Redis, Prisma, and WebSockets."
-role: "Backend engineering"
-type: "Company system"
+summary: "A real-time warehouse management system for inventory tracking, built with NestJS, PostgreSQL, Prisma, Redis, and WebSockets."
+role: "Full-stack engineering"
+type: "Warehouse management system"
 order: 4
 kind: company
 tier: flagship
@@ -14,8 +14,9 @@ stack:
   - Prisma
   - WebSockets
 highlights:
-  - "NestJS, PostgreSQL, and Prisma."
-  - "Redis and WebSockets are part of the stack."
+  - "Real-time warehouse and inventory tracking."
+  - "NestJS API on PostgreSQL through Prisma."
+  - "Redis and WebSockets for live updates."
 seo:
   title: "Herd WMS Case Study"
   description: "Brief case study for Herd WMS, built with NestJS, PostgreSQL, Redis, Prisma, and WebSockets."
@@ -29,4 +30,4 @@ seo:
 
 ## Architecture
 
-Herd WMS uses NestJS, PostgreSQL, Redis, Prisma, and WebSockets.
+Herd WMS is a real-time warehouse management system. A NestJS API sits on PostgreSQL through Prisma, Redis supports caching and messaging, and WebSockets push inventory changes to connected clients as they happen.

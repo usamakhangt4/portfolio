@@ -4,7 +4,7 @@ summary: "A Rust CLI that reads staged Git changes, asks a local Ollama model fo
 role: "CLI tool author"
 type: "Developer tooling"
 year: "2026"
-order: 10
+order: 6
 tier: "flagship"
 featured: true
 stack:
