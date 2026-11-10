@@ -1,11 +1,17 @@
 {
   "short_name": "Usama Khan",
-  "name": "Muhammad Usama Khan Portfolio",
+  "name": "Usama Khan — Portfolio",
   "icons": [
     {
       "src": "/favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "sizes": "any",
       "type": "image/x-icon"
+    },
+    {
+      "src": "/icon.png",
+      "sizes": "150x150",
+      "type": "image/png",
+      "purpose": "any"
     }
   ],
   "start_url": "/",

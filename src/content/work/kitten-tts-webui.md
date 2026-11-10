@@ -4,7 +4,7 @@ summary: "A Windows web UI for local text-to-speech with the KittenTTS 2 model, 
 role: "Local AI tooling"
 type: "Local speech web UI"
 year: "2026"
-order: 7
+order: 5
 tier: flagship
 featured: true
 stack:

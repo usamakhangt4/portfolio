@@ -4,7 +4,7 @@ summary: "A publishable React tree component with virtualization, drag-and-drop 
 role: "Library author"
 type: "Open-source React package"
 year: "2024"
-order: 9
+order: 7
 featured: true
 stack:
   - React
@@ -21,7 +21,7 @@ links:
     href: "https://github.com/usamakhangt4/shadcn-virtualized-tree"
   - label: "npm"
     href: "https://www.npmjs.com/package/shadcn-virtualized-tree"
-  - label: "Demo"
+  - label: "Live demo"
     href: "https://usamakhangt4.github.io/shadcn-virtualized-tree/"
 seo:
   title: "shadcn Virtualized Tree Case Study"
