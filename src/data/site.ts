@@ -3,15 +3,15 @@ import { resolveSiteUrl } from "../lib/site-url";
 export const siteConfig = {
   name: "Usama Khan",
   legalName: "Muhammad Usama Bin Akhtar Khan",
-  role: "Senior Frontend Engineer",
-  title: "Usama Khan (Muhammad Usama Bin Akhtar Khan) — Senior Frontend Engineer",
+  role: "Applied AI Engineer",
+  title: "Usama Khan (Muhammad Usama Bin Akhtar Khan) — Applied AI Engineer",
   description:
-    "Senior frontend engineer: 7+ years of React, Next.js and TypeScript product work, backed by full-stack and applied AI. Case studies, npm libraries and resume.",
-  lede: "I build fast, accessible React and Next.js interfaces in TypeScript, and the full-stack and applied AI systems behind them. 7+ years shipping production software.",
+    "Applied AI engineer: computer vision, local LLMs and TTS, backed by 7+ years of React, Next.js and TypeScript product work. Case studies, npm libraries and resume.",
+  lede: "I build computer-vision and local LLM systems, and the React and Next.js product interfaces they ship in. 7+ years of production TypeScript.",
   url: resolveSiteUrl(),
   email: "usamakhangt4@gmail.com",
-  location: "Wah Cantt, Pakistan",
-  availability: "Open to senior frontend and full-stack roles, remote or relocation",
+  location: "Islamabad, Pakistan",
+  availability: "Open to applied AI and full-stack roles, remote or relocation",
   resume: "/muhammad-usama-khan-resume.pdf",
   // Same-origin Open Graph image (1200×630). Override via absolute URL if needed.
   ogImage: "/og.png",
